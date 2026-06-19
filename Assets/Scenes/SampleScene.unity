@@ -771,6 +771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 424933104}
   - component: {fileID: 424933105}
+  - component: {fileID: 424933106}
   m_Layer: 0
   m_Name: Engine
   m_TagString: Untagged
@@ -808,10 +809,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998bb708b05141f4cad1149c3bb7533c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EngineRPM
-  horsepower: 0
   rpmText: {fileID: 1276555885}
   gearText: {fileID: 1888280341}
   torqueText: {fileID: 107417852}
+--- !u!114 &424933106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424933103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d85028c1bcd6fb408d920b470174779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RevBand
 --- !u!1 &571235808
 GameObject:
   m_ObjectHideFlags: 0
