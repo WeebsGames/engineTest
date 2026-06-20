@@ -32,7 +32,7 @@ public class EngineRPM : MonoBehaviour
         //initialize revBands
         revBands = new List<RevBand>();
 
-        revBands.Insert(0, new RevBand(10, REVLIMIT/2, 1));
+        revBands.Insert(0, new RevBand(1, REVLIMIT/2, 1));
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class EngineRPM : MonoBehaviour
         // print(revBands[0]);
         if (Input.GetKey(KeyCode.Space) && rpm < REVLIMIT)
         {
-            rpm += revBands[0].rev(rpm, REVLIMIT);
+            rpm = revBands[0].rev(rpm, REVLIMIT);
         } else if (rpm > 0)
         {
             rpm -= 1;
@@ -81,13 +81,12 @@ public class EngineRPM : MonoBehaviour
 
     void FixedUpdate()
     {
-        rpm = Mathf.Round(rpm);
         if(rpm > REVLIMIT)
         {
             rpm -= LIMITER; 
         }
 
-        rpmText.text = "RPM: " + rpm;
+        rpmText.text = "RPM: " + Mathf.Round(rpm);
         gearText.text = "Gear: " + gear;
         torqueText.text = "Torque: " + torque;
 
