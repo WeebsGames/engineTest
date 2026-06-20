@@ -30,10 +30,9 @@ public class EngineRPM : MonoBehaviour
         driveShaft = transform.Find("DriveShaft");
 
         //initialize revBands
-        revBands = new List<RevBand>(8);
+        revBands = new List<RevBand>();
 
-        revBands[0] = new RevBand(10, REVLIMIT/2);
-        print(revBands[0]);
+        revBands.Insert(0, new RevBand(10, REVLIMIT/2, 1));
     }
 
     // Update is called once per frame
@@ -43,7 +42,6 @@ public class EngineRPM : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && rpm < REVLIMIT)
         {
             rpm += revBands[0].rev(rpm, REVLIMIT);
-            print("increasing rev");
         } else if (rpm > 0)
         {
             rpm -= 1;

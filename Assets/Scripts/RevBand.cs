@@ -8,19 +8,21 @@ public class RevBand : MonoBehaviour
     float idealRevPoint;
     float revPenalty;
     
-    public RevBand(float revs, float idealRevPoint)
+    public RevBand(float revs, float idealRevPoint, float revPenalty)
     {
         this.revs = revs;
         this.idealRevPoint = idealRevPoint;
+        this.revPenalty = revPenalty;
     }
 
     public float rev(float rpm, float REVLIMIT)
     {
-        print("revving");
+        print("revving by " + math.min(revs - (math.abs(rpm - idealRevPoint) / REVLIMIT) * revPenalty, 0));
+        print("formula output: " + (math.abs(rpm - idealRevPoint) / REVLIMIT) * revPenalty);
         float res = rpm;
 
         //the further away rpm is from the idealRevPoint, the higher the revPenalty will be
-        res += revs - (math.abs(rpm - idealRevPoint) / REVLIMIT) * revPenalty;
+        res += math.min(revs - (math.abs(rpm - idealRevPoint) / REVLIMIT) * revPenalty, 0);
         return res;
     }
 }
