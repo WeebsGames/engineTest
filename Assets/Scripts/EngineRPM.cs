@@ -32,7 +32,12 @@ public class EngineRPM : MonoBehaviour
         //initialize revBands
         revBands = new List<RevBand>();
 
-        revBands.Insert(0, new RevBand(1, REVLIMIT/2, 1));
+        revBands.Insert(0, new RevBand(5, 1500, 1));
+        revBands.Insert(1, new RevBand(4, 2500, 2));
+        revBands.Insert(2, new RevBand(4, 3500, 6));
+        revBands.Insert(3, new RevBand(4, 3750, 8));
+        revBands.Insert(4, new RevBand(4, 4000, 10));
+        revBands.Insert(5, new RevBand(3, 4000, 12));
     }
 
     // Update is called once per frame
@@ -41,46 +46,27 @@ public class EngineRPM : MonoBehaviour
         // print(revBands[0]);
         if (Input.GetKey(KeyCode.Space) && rpm < REVLIMIT)
         {
-            rpm = revBands[0].rev(rpm, REVLIMIT);
+            rpm = revBands[gear].rev(rpm, REVLIMIT);
         } else if (rpm > 0)
         {
-            rpm -= 1;
+            rpm -= 2;
         }
         if(rpm < 0)
         {
             rpm = 0;
         }
 
-        // if(Input.GetKeyDown(KeyCode.Space) && !engineOn && gear == 0)
-        // {
-        //     engineOn = true;
-        // }
-
-        // if (Input.GetKeyDown(KeyCode.RightArrow) && gear != 6)
-        // {
-        //     gear += 1;
-        //     if(rpm < 3000)
-        //     {
-        //         engineOn = false;
-        //         rpm = 0;
-        //     } else
-        //     {
-        //         rpm *= 0.4f;
-        //     }
-
-        // }
-        // if(Input.GetKeyDown(KeyCode.LeftArrow) && gear != -1)
-        // {
-        //     gear -= 1;
-        //     if(rpm > 5000)
-        //     {
-        //         engineOn = false;
-        //         rpm = 0;
-        //     } else
-        //     {
-        //         rpm *= 1.25f;
-        //     }
-        // }
+        if (Input.GetKeyDown(KeyCode.RightArrow) && gear < revBands.Count - 1)
+        {
+            gear++;
+            rpm*=0.4f;
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && gear > 0)
+        {
+            gear--;
+            rpm*=1.5f;
+        }
+        
     }
 
     void FixedUpdate()

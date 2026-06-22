@@ -17,8 +17,8 @@ public class RevBand : MonoBehaviour
 
     public float rev(float rpm, float REVLIMIT)
     {
-        print("revving by " + math.max(revs - (math.abs(rpm - idealRevPoint) / REVLIMIT) * revPenalty, 0));
-        print("formula output: " + (math.abs(rpm - idealRevPoint) / REVLIMIT) * revPenalty);
+        // print("revving by " + math.max(revs - (math.abs(rpm - idealRevPoint) / REVLIMIT) * revPenalty, 0));
+        // print("formula output: " + (math.abs(rpm - idealRevPoint) / REVLIMIT) * revPenalty);
         float res = rpm;
 
         //the further away rpm is from the idealRevPoint, the higher the revPenalty will be
