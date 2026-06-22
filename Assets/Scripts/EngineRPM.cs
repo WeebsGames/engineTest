@@ -46,6 +46,10 @@ public class EngineRPM : MonoBehaviour
         {
             rpm -= 1;
         }
+        if(rpm < 0)
+        {
+            rpm = 0;
+        }
 
         // if(Input.GetKeyDown(KeyCode.Space) && !engineOn && gear == 0)
         // {
