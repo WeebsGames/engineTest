@@ -9,7 +9,7 @@ public class EngineRPM : MonoBehaviour
 
 
     public const int REVLIMIT = 7000;
-    public const float LIMITER = 1000;
+    public const float LIMITER = 500;
     public TMP_Text rpmText;
     public TMP_Text gearText;
     public TMP_Text torqueText;
