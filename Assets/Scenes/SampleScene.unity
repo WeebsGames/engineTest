@@ -308,15 +308,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164836540}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.988, y: 1.31, z: -4.621}
+  m_LocalRotation: {x: -0, y: -0.6876729, z: -0, w: 0.72602063}
+  m_LocalPosition: {x: 3.054, y: 0.727, z: -4.326}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 272528503}
   - {fileID: 1023787337}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -86.892, z: 0}
 --- !u!1 &269954431
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,7 +533,7 @@ MonoBehaviour:
   wheelModel: {fileID: 1023787337}
   WheelCollider: {fileID: 0}
   steerable: 0
-  motorized: 0
+  motorized: 1
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,6 +962,8 @@ MonoBehaviour:
   rpmText: {fileID: 1276555885}
   gearText: {fileID: 1888280341}
   torqueText: {fileID: 107417852}
+  wheels:
+  - {fileID: 272528505}
 --- !u!114 &424933106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -974,6 +976,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d85028c1bcd6fb408d920b470174779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RevBand
+  revs: 0
+  idealRevPoint: 0
+  revPenalty: 0
 --- !u!1 &541067718
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,13 +1005,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541067718}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5085738, y: 0.49127668, z: 0.50857365, w: 0.49127668}
+  m_LocalRotation: {x: 0, y: 0, z: 0.71923065, w: 0.6947714}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.19959493, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1023787337}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 91.982}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 91.982}
 --- !u!23 &541067721
 MeshRenderer:
   m_ObjectHideFlags: 0

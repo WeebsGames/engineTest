@@ -15,6 +15,7 @@ public class EngineRPM : MonoBehaviour
     public TMP_Text rpmText;
     public TMP_Text gearText;
     public TMP_Text torqueText;
+    public WheelControl[] wheels;
 
     float rpm = 0;
     float revs = 10;
@@ -34,7 +35,7 @@ public class EngineRPM : MonoBehaviour
         //initialize revBands
         revBands = new List<RevBand>();
 
-        revBands.Insert(0, new RevBand(5, 1500, 0));
+        revBands.Insert(0, new RevBand(5, 1500, 0.5f));
         revBands.Insert(1, new RevBand(5, 1500, 1));
         revBands.Insert(2, new RevBand(4, 2500, 2));
         revBands.Insert(3, new RevBand(4, 3500, 6));
@@ -87,5 +88,13 @@ public class EngineRPM : MonoBehaviour
         torqueText.text = "Torque: " + Mathf.Round(torque);
 
         driveShaft.Rotate(Vector3.up * rpm * Time.deltaTime);
+
+        foreach (var wheel in wheels)
+        {
+            if (wheel.motorized)
+            {
+                wheel.WheelCollider.motorTorque = torque;
+            }
+        }
     }
 }
