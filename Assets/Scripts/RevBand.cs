@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class RevBand : MonoBehaviour
 {
-    float revs;
-    float idealRevPoint;
-    float revPenalty;
+    public float revs;
+    public float idealRevPoint;
+    public float revPenalty;
 
     public RevBand(float revs = 1, float idealRevPoint = 3500, float revPenalty = 1)
     {

@@ -69,6 +69,8 @@ public class EngineRPM : MonoBehaviour
             gear--;
             rpm*=1.5f;
         }
+
+        
         
     }
 
@@ -76,13 +78,13 @@ public class EngineRPM : MonoBehaviour
     {
         if(rpm > REVLIMIT)
         {
-            rpm -= LIMITER; 
+            rpm -= LIMITER/revBands[gear].revPenalty; 
         }
         torque = ((horsepower * rpm) / 5252) * gear;
 
         rpmText.text = "RPM: " + Mathf.Round(rpm);
         gearText.text = "Gear: " + gear;
-        torqueText.text = "Torque: " + torque;
+        torqueText.text = "Torque: " + Mathf.Round(torque);
 
         driveShaft.Rotate(Vector3.up * rpm * Time.deltaTime);
     }
