@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class EngineRPM : MonoBehaviour
@@ -10,13 +11,14 @@ public class EngineRPM : MonoBehaviour
 
     public const int REVLIMIT = 7000;
     public const float LIMITER = 500;
+    public float horsepower =  100;
+    public float torque = 100;
     public TMP_Text rpmText;
     public TMP_Text gearText;
     public TMP_Text torqueText;
 
     float rpm = 0;
     float revs = 10;
-    float torque = 0;
     int gear = 0;
     bool engineOn = true;
     Transform driveShaft;
@@ -75,6 +77,7 @@ public class EngineRPM : MonoBehaviour
         {
             rpm -= LIMITER; 
         }
+        torque = (torque * rpm) / 5252;
 
         rpmText.text = "RPM: " + Mathf.Round(rpm);
         gearText.text = "Gear: " + gear;

@@ -7,8 +7,8 @@ public class RevBand : MonoBehaviour
     float revs;
     float idealRevPoint;
     float revPenalty;
-    
-    public RevBand(float revs, float idealRevPoint, float revPenalty)
+
+    public RevBand(float revs = 1, float idealRevPoint = 3500, float revPenalty = 1)
     {
         this.revs = revs;
         this.idealRevPoint = idealRevPoint;

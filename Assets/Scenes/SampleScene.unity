@@ -456,6 +456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 272528503}
   - component: {fileID: 272528504}
+  - component: {fileID: 272528505}
   m_Layer: 0
   m_Name: WheelCollider
   m_TagString: Untagged
@@ -489,7 +490,7 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 35000
+    spring: 0
     damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
@@ -517,6 +518,22 @@ WheelCollider:
   m_LayerOverridePriority: 0
   m_Enabled: 1
   m_ProvidesContacts: 0
+--- !u!114 &272528505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272528502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4d7db5d46ee6eb408be20412a892dd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WheelControl
+  wheelModel: {fileID: 541067719}
+  WheelCollider: {fileID: 0}
+  steerable: 0
+  motorized: 0
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -941,6 +958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 998bb708b05141f4cad1149c3bb7533c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EngineRPM
+  horsepower: 100
   rpmText: {fileID: 1276555885}
   gearText: {fileID: 1888280341}
   torqueText: {fileID: 107417852}
