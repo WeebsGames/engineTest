@@ -11,14 +11,14 @@ public class EngineRPM : MonoBehaviour
 
     public const int REVLIMIT = 7000;
     public const float LIMITER = 500;
-    public float horsepower =  100;
-    public float torque = 100;
+    public float horsepower = 100;
     public TMP_Text rpmText;
     public TMP_Text gearText;
     public TMP_Text torqueText;
 
     float rpm = 0;
     float revs = 10;
+    float torque = 0;
     int gear = 0;
     bool engineOn = true;
     Transform driveShaft;
@@ -34,12 +34,13 @@ public class EngineRPM : MonoBehaviour
         //initialize revBands
         revBands = new List<RevBand>();
 
-        revBands.Insert(0, new RevBand(5, 1500, 1));
-        revBands.Insert(1, new RevBand(4, 2500, 2));
-        revBands.Insert(2, new RevBand(4, 3500, 6));
-        revBands.Insert(3, new RevBand(4, 3750, 8));
-        revBands.Insert(4, new RevBand(4, 4000, 10));
-        revBands.Insert(5, new RevBand(3, 4000, 12));
+        revBands.Insert(0, new RevBand(5, 1500, 0));
+        revBands.Insert(1, new RevBand(5, 1500, 1));
+        revBands.Insert(2, new RevBand(4, 2500, 2));
+        revBands.Insert(3, new RevBand(4, 3500, 6));
+        revBands.Insert(4, new RevBand(4, 3750, 8));
+        revBands.Insert(5, new RevBand(4, 4000, 10));
+        revBands.Insert(6, new RevBand(3, 4000, 12));
     }
 
     // Update is called once per frame
@@ -77,7 +78,7 @@ public class EngineRPM : MonoBehaviour
         {
             rpm -= LIMITER; 
         }
-        torque = (torque * rpm) / 5252;
+        torque = ((horsepower * rpm) / 5252) * gear;
 
         rpmText.text = "RPM: " + Mathf.Round(rpm);
         gearText.text = "Gear: " + gear;
