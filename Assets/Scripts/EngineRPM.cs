@@ -47,7 +47,6 @@ public class EngineRPM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // print(revBands[0]);
         if (Input.GetKey(KeyCode.Space) && rpm < REVLIMIT)
         {
             rpm = revBands[gear].rev(rpm, REVLIMIT);
@@ -70,9 +69,6 @@ public class EngineRPM : MonoBehaviour
             gear--;
             rpm*=1.5f;
         }
-
-        
-        
     }
 
     void FixedUpdate()
