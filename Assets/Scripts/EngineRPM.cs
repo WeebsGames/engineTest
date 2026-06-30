@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class EngineRPM : MonoBehaviour
 {
@@ -16,6 +17,11 @@ public class EngineRPM : MonoBehaviour
     public TMP_Text gearText;
     public TMP_Text torqueText;
     public WheelControl[] wheels;
+    public InputActionReference moveAction;
+    public float steeringRange = 30f;
+    public float steeringRangeAtMaxSpeed = 10f;
+    public Rigidbody rigidBody;
+    public float maxSpeed = 20f;
 
     float rpm = 0;
     float revs = 10;
@@ -85,8 +91,19 @@ public class EngineRPM : MonoBehaviour
 
         driveShaft.Rotate(Vector3.up * rpm * Time.deltaTime);
 
+        float forwardSpeed = Vector3.Dot(transform.forward, rigidBody.linearVelocity);
+        float speedFactor = Mathf.InverseLerp(0, maxSpeed, Mathf.Abs(forwardSpeed)); // Normalized speed factor
+
+        float hInput = moveAction.action.ReadValue<Vector2>().x; // Steering input
+        float currentSteerRange = Mathf.Lerp(steeringRange, steeringRangeAtMaxSpeed, speedFactor);
+
         foreach (var wheel in wheels)
         {
+            if (wheel.steerable)
+            {
+                wheel.WheelCollider.steerAngle = hInput * currentSteerRange;
+            }
+
             if (wheel.motorized)
             {
                 wheel.WheelCollider.motorTorque = torque;
