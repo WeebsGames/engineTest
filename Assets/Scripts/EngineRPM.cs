@@ -65,12 +65,12 @@ public class EngineRPM : MonoBehaviour
             rpm = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) && gear < revBands.Count - 1)
+        if (Input.GetKeyDown(KeyCode.E) && gear < revBands.Count - 1)
         {
             gear++;
             rpm*=0.4f;
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && gear > 0)
+        if (Input.GetKeyDown(KeyCode.Q) && gear > 0)
         {
             gear--;
             rpm*=1.5f;
