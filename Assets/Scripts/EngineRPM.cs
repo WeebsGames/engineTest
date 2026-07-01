@@ -60,6 +60,10 @@ public class EngineRPM : MonoBehaviour
         {
             rpm -= 2;
         }
+        if (Input.GetKey(KeyCode.S))
+        {
+            rpm -=10;
+        }
         if(rpm < 0)
         {
             rpm = 0;
